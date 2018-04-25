@@ -74,9 +74,6 @@ public class goodsChooseDialog extends PopupWindow {
         this.setFocusable(false);
         this.setOutsideTouchable(true);
 
-
-        System.out.println("屏幕宽度:" + String.valueOf(getWindowWidth(context)));
-
         titleArr = new ArrayList<String>();
 
         titleArr.add("1零食");
@@ -93,17 +90,20 @@ public class goodsChooseDialog extends PopupWindow {
         titleArr.add("12超长边框大个黑白电视");
         titleArr.add("13超长边框大个黑白电视");
         titleArr.add("14超长边框大个黑白电视");
+        titleArr.add("15超长边框大个黑白电视");
+        titleArr.add("16超长边框大个黑白电视");
+
 
         animotionAddBtn(titleArr);
 
-        messureAndLoad(ggLayout);
+        messureAndLoad();
 
         selectBtn(buttonArrayList.get(0));
 
     }
 
 
-    public void messureAndLoad(LinearLayout layout) {
+    public void messureAndLoad() {
 
         int ScreanWidth = getWindowWidth(mcontext);
         int lineWidth = 20;
@@ -124,14 +124,23 @@ public class goodsChooseDialog extends PopupWindow {
                 layout1.addView(button);
                 lineWidth = lineWidth + buttonWidth + 20;
 
+                if (i==buttonArrayList.size()-1){
+                    ggLayout.addView(layout1);
+                }
+
             } else {
 
                 ggLayout.addView(layout1);
                 layout1 = creatLinearLayout();
                 layout1.addView(button);
                 lineWidth = buttonWidth;
-
+                if (i==buttonArrayList.size()-1){
+                    ggLayout.addView(layout1);
+                }
             }
+
+
+
 
         }
 
@@ -171,7 +180,7 @@ public class goodsChooseDialog extends PopupWindow {
         button.setTextSize(14);
         button.setTextColor(Color.BLACK);
         button.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        button.setBackgroundResource(R.drawable.bg_item_order);
+        button.setBackgroundResource(R.drawable.shop_imglayout_order);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, dip2px(mcontext, 30));
         layoutParams.setMargins(dip2px(mcontext, 20), 0, 0, 0);
         button.setPadding(dip2px(mcontext, 10), 0, dip2px(mcontext, 10), 0);
